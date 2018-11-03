@@ -1,0 +1,2 @@
+class BooksInStock < ApplicationRecord
+end
