@@ -5,3 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#some bookstores:
+Shop.create({name: "Amazon"})
+Shop.create({name: "BN.com"})
+Shop.create({name: "Strand - NYC"})
+Shop.create({name: "McNally Jackson Books - NYC"})
+Shop.create({name: "Powell's City of Books - Portland"})
+
+#the Big Five publishers:
+Publisher.create({name: "Penguin Random House"})
+Publisher.create({name: "Macmillan"})
+Publisher.create({name: "Hachette"})
+Publisher.create({name: "HarperCollins"})
+Publisher.create({name: "Simon & Schuster"})
+
+#some books:
+Book.create({title: "Yiddish Songs from Warsaw", author: "Jane Peppler", publisher_id: 1})
+Book.create({title: "The Lion, The Witch and the Wardrobe", author: "C.S. Lewis", publisher_id: 4})
+Book.create({title: "The Old Man and the Sea", author: "Ernest Hemingway", publisher_id: 5})
+
+#finally, some books in stock data:
+BooksInStock.create({book_id: 1, shop_id: 1, copies_in_stock: 120, copies_sold: 3})
+BooksInStock.create({book_id: 1, shop_id: 2, copies_in_stock: 7, copies_sold: 19})
+BooksInStock.create({book_id: 2, shop_id: 3, copies_in_stock: 77, copies_sold: 32})
+BooksInStock.create({book_id: 3, shop_id: 5, copies_in_stock: 6, copies_sold: 83})
