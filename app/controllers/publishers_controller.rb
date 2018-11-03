@@ -5,4 +5,9 @@ class PublishersController < ApplicationController
     render json: publishers
   end
 
+  def show
+    publisher = Publisher.find(params[:id])
+    render json: publisher
+  end
+
 end
