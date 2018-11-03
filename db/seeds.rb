@@ -26,7 +26,18 @@ Book.create({title: "The Lion, The Witch and the Wardrobe", author: "C.S. Lewis"
 Book.create({title: "The Old Man and the Sea", author: "Ernest Hemingway", publisher_id: 5})
 
 #finally, some books in stock data:
-BooksInStock.create({book_id: 1, shop_id: 1, copies_in_stock: 120, copies_sold: 3})
+BooksInStock.create({book_id: 1, shop_id: 1, copies_in_stock: 123, copies_sold: 77})
+BooksInStock.create({book_id: 2, shop_id: 1, copies_in_stock: 66, copies_sold: 304})
+BooksInStock.create({book_id: 3, shop_id: 1, copies_in_stock: 931, copies_sold: 49})
+
 BooksInStock.create({book_id: 1, shop_id: 2, copies_in_stock: 7, copies_sold: 19})
+
 BooksInStock.create({book_id: 2, shop_id: 3, copies_in_stock: 77, copies_sold: 32})
+BooksInStock.create({book_id: 5, shop_id: 3, copies_in_stock: 1, copies_sold: 99})
+
+BooksInStock.create({book_id: 1, shop_id: 4, copies_in_stock: 45, copies_sold: 55})
+BooksInStock.create({book_id: 2, shop_id: 4, copies_in_stock: 77, copies_sold: 32})
+
 BooksInStock.create({book_id: 3, shop_id: 5, copies_in_stock: 6, copies_sold: 83})
+BooksInStock.create({book_id: 4, shop_id: 5, copies_in_stock: 0, copies_sold: 200})
+BooksInStock.create({book_id: 5, shop_id: 5, copies_in_stock: 600, copies_sold: 0})
