@@ -7,8 +7,8 @@ class PublishersController < ApplicationController
 
   def show
     #getting all publisher's shops...
-    publisher = Publisher.find(params[:id]).shops.includes(:copies).order("copies_sold DESC") #including associate model copies and ordering by copies_sold attribute in descending order...
-    render json: publisher, pub_id: params[:id] #passing publisher_id (pub_id) as instance_option to shop_serializer
+    publisher_list_of_shops = Publisher.find(params[:id]).shops.includes(:copies).order("copies_sold DESC").uniq #including associate model copies and ordering by copies_sold attribute in descending order, and removing duplicate values with uniq...
+    render json: publisher_list_of_shops, pub_id: params[:id] #passing publisher_id (pub_id) as instance_option to shop_serializer
   end
 
 end
