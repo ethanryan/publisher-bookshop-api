@@ -24,11 +24,12 @@ class ShopSerializer < ActiveModel::Serializer
               end
             end
 
+            def select_books_by_publisher
+              object.copies.select{|eachCopy| eachCopy.book.publisher.id === instance_options[:publisher_id].to_i}
+            end
+
             def publisher_books_sold_count
-              # getting publisher_id via instance_options from publishers_controller, to select only those books that were published by the publisher...
-              object.copies
-              .select{|eachCopy| eachCopy.book.publisher.id === instance_options[:publisher_id].to_i}
-              .map{|eachCopy| eachCopy.copies_sold}.reduce( :+ ) #mapping over eachCopy's copies_sold data and reducing that array of numbers to its sum
+              select_books_by_publisher.map{|eachCopy| eachCopy.copies_sold}.reduce( :+ ) #mapping over eachCopy's copies_sold data and reducing that array of numbers to its sum
             end
 
             def shop_books_sold_count
@@ -36,10 +37,7 @@ class ShopSerializer < ActiveModel::Serializer
             end
 
             def publisher_books_in_stock
-              #getting publisher_id via instance_options from publishers_controller, to select only those books that were published by the publisher...
-              object.copies
-              .select{|eachCopy| eachCopy.book.publisher.id === instance_options[:publisher_id].to_i}
-              .map do |eachCopy|
+              select_books_by_publisher.map do |eachCopy|
                 {
                     id: eachCopy.book.id, #showing book id, instead of books_in_stock id (AKA book copy)
                     title: eachCopy.book.title,
