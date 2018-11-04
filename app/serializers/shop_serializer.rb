@@ -4,8 +4,12 @@ class ShopSerializer < ActiveModel::Serializer
             :books_sold_count, #calling function below to get value for books_sold_count
             :books_in_stock #calling function below to change name of this attribute
 
+            def is_publisher
+              instance_options[:publisher_id] #if API endoing is being called with a publisher_id...
+            end
+
             def books_sold_count
-              if instance_options[:publisher_id] #if API endoing is being called with a publisher_id...
+              if is_publisher
                 publisher_books_sold_count
               else
                 shop_books_sold_count
@@ -13,7 +17,7 @@ class ShopSerializer < ActiveModel::Serializer
             end
 
             def books_in_stock
-              if instance_options[:publisher_id] #if API endpoint is being called with a publisher_id...
+              if is_publisher
                 publisher_books_in_stock
               else
                 shop_books_in_stock
