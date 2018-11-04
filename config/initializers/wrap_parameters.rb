@@ -8,7 +8,7 @@ ActiveSupport.on_load(:action_controller) do
   wrap_parameters format: [:json]
 end
 
-# To enable root element in JSON for ActiveRecord objects.
-# ActiveSupport.on_load(:active_record) do
-#   self.include_root_in_json = true
-# end
+# To enable root element in JSON for ActiveRecord objects. #NOTE: uncommented this, but still not showing root in json...
+ActiveSupport.on_load(:active_record) do
+  self.include_root_in_json = true
+end
