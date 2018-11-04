@@ -6,9 +6,8 @@ class PublishersController < ApplicationController
   end
 
   def show
-    publisher = Publisher.find(params[:id])
-    # result = {shops: publisher.shops}
-    render json: publisher.shops
+    publisher = Publisher.find(params[:id]).shops #getting all publisher's shops...
+    render json: publisher, pub_id: params[:id] #passing publisher_id (pub_id) as instance_option to shop_serializer
   end
 
 end
