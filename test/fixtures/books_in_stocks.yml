@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book_id: 1
+  shop_id: 1
+  copies_in_stock: 1
+  copies_sold: 1
+
+two:
+  book_id: 1
+  shop_id: 1
+  copies_in_stock: 1
+  copies_sold: 1
