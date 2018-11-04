@@ -5,7 +5,7 @@ class ShopSerializer < ActiveModel::Serializer
             :books_in_stock #calling function below to change name of this attribute
 
             def books_sold_count
-              if instance_options[:pub_id] #if API endoing is being called with a pub_id...
+              if instance_options[:publisher_id] #if API endoing is being called with a publisher_id...
                 publisher_books_sold_count
               else
                 shop_books_sold_count
@@ -13,7 +13,7 @@ class ShopSerializer < ActiveModel::Serializer
             end
 
             def books_in_stock
-              if instance_options[:pub_id] #if API endpoint is being called with a pub_id...
+              if instance_options[:publisher_id] #if API endpoint is being called with a publisher_id...
                 publisher_books_in_stock
               else
                 shop_books_in_stock
@@ -23,7 +23,7 @@ class ShopSerializer < ActiveModel::Serializer
             def publisher_books_sold_count
               # getting publisher_id via instance_options from publishers_controller, to select only those books that were published by the publisher...
               object.copies
-              .select{|eachCopy| eachCopy.book.publisher.id === instance_options[:pub_id].to_i}
+              .select{|eachCopy| eachCopy.book.publisher.id === instance_options[:publisher_id].to_i}
               .map{|eachCopy| eachCopy.copies_sold}.reduce( :+ ) #mapping over eachCopy's copies_sold data and reducing that array of numbers to its sum
             end
 
@@ -34,7 +34,7 @@ class ShopSerializer < ActiveModel::Serializer
             def publisher_books_in_stock
               #getting publisher_id via instance_options from publishers_controller, to select only those books that were published by the publisher...
               object.copies
-              .select{|eachCopy| eachCopy.book.publisher.id === instance_options[:pub_id].to_i}
+              .select{|eachCopy| eachCopy.book.publisher.id === instance_options[:publisher_id].to_i}
               .map do |eachCopy|
                 {
                     id: eachCopy.book.id, #showing book id, instead of books_in_stock id (AKA book copy)
