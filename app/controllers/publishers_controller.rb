@@ -6,7 +6,8 @@ class PublishersController < ApplicationController
   end
 
   def show
-    publisher = Publisher.find(params[:id]).shops #getting all publisher's shops...
+    #getting all publisher's shops...
+    publisher = Publisher.find(params[:id]).shops.includes(:copies).order("copies_sold DESC") #including associate model copies and ordering by copies_sold attribute in descending order...
     render json: publisher, pub_id: params[:id] #passing publisher_id (pub_id) as instance_option to shop_serializer
   end
 
@@ -18,4 +19,6 @@ end
 # NOTE: publisher.shops accomplishes this...
 
 #  Shops should be ordered by the number of books sold.
+# NOTE: assuming books_sold_count means a particular publisher's sold books...
+
 #  Each shop should include the list of Publisher’s books that are currently in stock.
