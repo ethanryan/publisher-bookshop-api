@@ -1,5 +1,5 @@
 class RenameBooksInStockToCopy < ActiveRecord::Migration[5.2]
   def change
-    rename_table :books_in_stock, :copy
+    rename_table :books_in_stocks, :copy
   end
 end
