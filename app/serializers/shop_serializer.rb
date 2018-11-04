@@ -6,7 +6,7 @@ class ShopSerializer < ActiveModel::Serializer
 
             def books_in_stock
               # byebug
-              object.books_in_stocks
+              object.copies
               .select{|eachBookInStock| eachBookInStock.book.publisher.id === instance_options[:pub_id].to_i} #getting publisher_id via instance_options from publishers_controller, to select only those books that were published by the publisher...
               .map do |eachBookInStock|
                 {
