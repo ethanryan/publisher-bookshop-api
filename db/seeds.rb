@@ -54,4 +54,13 @@ Copy.create({book_id: 5, shop_id: 5, copies_in_stock: 600, copies_sold: 0})
   )
 end
 
+#updating total books_sold_count attribute to each shop
+(1..5).step() do |n|
+  shop = Shop.find(n)
+  shop.update(
+    books_sold_count: shop.copies.map{|e| e.copies_sold}.reduce(:+)
+  )
+  shop.save
+end
+
 #note: there may be multiple copies of the same book_id at the same shop, but this happens in real life, ex: same book, different cover.
