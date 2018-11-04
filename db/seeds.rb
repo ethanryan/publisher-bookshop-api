@@ -24,7 +24,7 @@ Publisher.create({name: "Simon & Schuster"})
 
 #some books:
 Book.create({title: "Yiddish Songs from Warsaw", author: "Jane Peppler", publisher_id: 1})
-Book.create({title: "Another Penguin Book...", author: "A Penguin...", publisher_id: 1})
+Book.create({title: "The Secret History", author: "Donna Tart", publisher_id: 1})
 Book.create({title: "The Lion, The Witch and the Wardrobe", author: "C.S. Lewis", publisher_id: 4})
 Book.create({title: "The Old Man and the Sea", author: "Ernest Hemingway", publisher_id: 5})
 
