@@ -30,8 +30,8 @@ Book.create({title: "The Old Man and the Sea", author: "Ernest Hemingway", publi
 
 100.times do
   Book.create(
-    title: Faker::Book.title,
-    author: Faker::Book.author,
+    title: Faker::Book.unique.title,
+    author: Faker::Book.unique.author,
     publisher_id: rand(1..5)
   )
 end
@@ -53,3 +53,5 @@ Copy.create({book_id: 5, shop_id: 5, copies_in_stock: 600, copies_sold: 0})
     copies_sold: rand(1..500)
   )
 end
+
+#note: there may be multiple copies of the same book_id at the same shop, but this happens in real life, ex: same book, different cover.
