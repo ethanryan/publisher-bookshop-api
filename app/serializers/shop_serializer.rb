@@ -5,19 +5,19 @@ class ShopSerializer < ActiveModel::Serializer
             :books_in_stock #calling function below to change name of this attribute
 
             def is_publisher
-              instance_options[:publisher_id] #if API endoing is being called with a publisher_id...
+              instance_options[:publisher_id] #if API endpoint is being called with a publisher_id...
             end
 
-            def books_sold_count
-              if is_publisher
-                publisher_books_sold_count
-              else
-                shop_books_sold_count
-              end
-            end
+            # def books_sold_count
+            #   if is_publisher
+            #     publisher_books_sold_count
+            #   else
+            #     shop_books_sold_count
+            #   end
+            # end
 
             def books_in_stock
-              if is_publisher
+              if instance_options[:publisher_id]
                 publisher_books_in_stock
               else
                 shop_books_in_stock
@@ -28,15 +28,16 @@ class ShopSerializer < ActiveModel::Serializer
               object.copies.select{|eachCopy| eachCopy.book.publisher.id === instance_options[:publisher_id].to_i}
             end
 
-            def publisher_books_sold_count
-              select_books_by_publisher.map{|eachCopy| eachCopy.copies_sold}.reduce( :+ ) #mapping over eachCopy's copies_sold data and reducing that array of numbers to its sum
-            end
+            # def publisher_books_sold_count
+            #   select_books_by_publisher.map{|eachCopy| eachCopy.copies_sold}.reduce( :+ ) #mapping over eachCopy's copies_sold data and reducing that array of numbers to its sum
+            # end
 
-            def shop_books_sold_count
-              object.copies.map{|eachCopy| eachCopy.copies_sold}.reduce( :+ ) #mapping over eachCopy's copies_sold data and reducing that array of numbers to its sum
-            end
+            # def shop_books_sold_count
+            #   object.copies.map{|eachCopy| eachCopy.copies_sold}.reduce( :+ ) #mapping over eachCopy's copies_sold data and reducing that array of numbers to its sum
+            # end
 
             def publisher_books_in_stock
+              # select_books_by_publisher = select_books_by_publisher
               select_books_by_publisher.map do |eachCopy|
                 {
                     id: eachCopy.book.id, #showing book id, instead of books_in_stock id (AKA book copy)
