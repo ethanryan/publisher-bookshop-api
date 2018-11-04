@@ -28,19 +28,28 @@ Book.create({title: "Another Penguin Book...", author: "A Penguin...", publisher
 Book.create({title: "The Lion, The Witch and the Wardrobe", author: "C.S. Lewis", publisher_id: 4})
 Book.create({title: "The Old Man and the Sea", author: "Ernest Hemingway", publisher_id: 5})
 
+100.times do
+  Book.create(
+    title: Faker::Book.title,
+    author: Faker::Book.author,
+    publisher_id: rand(1..5)
+  )
+end
+
 #finally, some copies in stock data:
 Copy.create({book_id: 1, shop_id: 1, copies_in_stock: 123, copies_sold: 77})
 Copy.create({book_id: 2, shop_id: 1, copies_in_stock: 66, copies_sold: 304})
 Copy.create({book_id: 3, shop_id: 1, copies_in_stock: 931, copies_sold: 49})
 
-Copy.create({book_id: 1, shop_id: 2, copies_in_stock: 7, copies_sold: 19})
-
-Copy.create({book_id: 2, shop_id: 3, copies_in_stock: 77, copies_sold: 32})
-Copy.create({book_id: 5, shop_id: 3, copies_in_stock: 1, copies_sold: 99})
-
-Copy.create({book_id: 1, shop_id: 4, copies_in_stock: 45, copies_sold: 55})
-Copy.create({book_id: 2, shop_id: 4, copies_in_stock: 77, copies_sold: 32})
-
 Copy.create({book_id: 3, shop_id: 5, copies_in_stock: 6, copies_sold: 83})
 Copy.create({book_id: 4, shop_id: 5, copies_in_stock: 0, copies_sold: 200})
 Copy.create({book_id: 5, shop_id: 5, copies_in_stock: 600, copies_sold: 0})
+
+200.times do
+  Copy.create(
+    book_id: rand(1..104),
+    shop_id: rand(1..5),
+    copies_in_stock: rand(0..500),
+    copies_sold: rand(1..500)
+  )
+end
