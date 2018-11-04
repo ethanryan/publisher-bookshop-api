@@ -31,9 +31,9 @@ Each shop should include the list of Publisher’s books that are currently in s
 
 Example response:
 
-![endpoint 1 pic](https://github.com/ethanryan/publisher-bookshop-api/blob/master/images/endpoint-1.png)
+![endpoint 1 pic](https://github.com/ethanryan/publisher-bookshop-api/blob/master/images/endpoint-1.png?)
 
-publisher_shops -> /publishers/:publisher_id/shops
+publisher_shops route: /publishers/:publisher_id/shops
 
 ### Endpoint 2
 
@@ -43,7 +43,7 @@ Example response:
 
 ![endpoint 2 pic](https://github.com/ethanryan/publisher-bookshop-api/blob/master/images/endpoint-2.png)
 
-shop -> /shops/:id
+shop route: /shops/:id
 
 
 xxx
