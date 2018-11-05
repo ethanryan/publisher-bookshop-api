@@ -46,27 +46,12 @@ Example response:
 shop route: /shops/:id
 
 
-xxx
+To test endpoints individually:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+run `rspec spec/requests/publisher_shops_spec.rb`
 
-Things you may want to cover:
+run `rspec spec/requests/shops_spec.rb`
 
-* Ruby version
+To run all tests:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+run `rspec`
