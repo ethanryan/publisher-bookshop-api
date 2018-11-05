@@ -2,7 +2,7 @@ class ShopsController < ApplicationController
 
   def index
     if params[:publisher_id] #getting all publisher's shops...
-      publisher_list_of_shops = Publisher.find(params[:publisher_id]).shops.where("books.publisher_id = '#{params[:publisher_id]}'").order("books_sold_count DESC").distinct #including associate model copies and ordering by copies_sold attribute in descending order, and removing duplicate values with uniq...
+      publisher_list_of_shops = Publisher.find(params[:publisher_id]).shops.where("books.publisher_id = '#{params[:publisher_id]}'").order("books_sold_count DESC").distinct
       render json: publisher_list_of_shops, publisher_id: params[:publisher_id], root: 'shops', adapter: :json #passing publisher_id (pub_id) as instance_option to shop_serializer
     else
       shops = Shop.all
@@ -23,7 +23,7 @@ end
 # NOTE: publisher.shops accomplishes this...
 
 #  Shops should be ordered by the number of books sold.
-# NOTE: .order("books_sold_count DESC") above accomblishes this, books_sold_count is a shop's total sold books, not a particular means a particular publisher's...
+# NOTE: .order("books_sold_count DESC") above accomplishes this, books_sold_count is a shop's total sold books, not a particular publisher's...
 
 #  Each shop should include the list of Publisher’s books that are currently in stock.
 # NOTE: conditionally rendering this in shop_serializer
