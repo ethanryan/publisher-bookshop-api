@@ -12,16 +12,7 @@ run `rake db:migrate`
 
 run `rake db:seed`
 
-Note: this app has the following routes:
-
-resources :publishers, only: [:index, :show]
-resources :publishers do
-  resources :shops, only: [:index]
-end
-resources :shops, only: [:index, :show]
-resources :books, only: [:index]
-
-Note: shops#index will conditionally render publisher_shops_path if params[:publisher_id]
+Note: this app has index and show routes for each model, and a nested route for publisher_shops. shops#index will conditionally render the publisher_shops_path if params[:publisher_id].
 
 ### Endpoint 1
 
@@ -46,27 +37,12 @@ Example response:
 shop route: /shops/:id
 
 
-xxx
+To test endpoints individually:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+run `rspec spec/requests/publisher_shops_spec.rb`
 
-Things you may want to cover:
+run `rspec spec/requests/shops_spec.rb`
 
-* Ruby version
+To run all tests:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+run `rspec`
