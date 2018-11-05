@@ -12,16 +12,7 @@ run `rake db:migrate`
 
 run `rake db:seed`
 
-Note: this app has the following routes:
-
-resources :publishers, only: [:index, :show]
-resources :publishers do
-  resources :shops, only: [:index]
-end
-resources :shops, only: [:index, :show]
-resources :books, only: [:index]
-
-Note: shops#index will conditionally render publisher_shops_path if params[:publisher_id]
+Note: this app has index and show routes for each model, and a nested route for publisher_shops. shops#index will conditionally render the publisher_shops_path if params[:publisher_id].
 
 ### Endpoint 1
 
